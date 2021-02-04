@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :authenticate_user!, only: [:destroy]
   def new
     @user = User.new
   end
@@ -10,5 +11,10 @@ class SessionsController < ApplicationController
     else
       redirect_to new_sessions_path, notice: "帳密錯誤"
     end
+  end
+
+  def destroy
+    session[User::SessionKey] = nil
+    redirect_to root_path, notice: '已登出！'
   end
 end
