@@ -1,0 +1,9 @@
+<h1>會員註冊</h1>
+
+<%= form_for(@user, url: registrations_path) do |f| %>
+  <%= f.email_field :email, placeholder: "電子信箱" %>
+  <%= f.password_field :password, placeholder: "密碼" %>
+  <%= f.password_field :password_confirm, placeholder: "確認密碼" %>
+
+  <%= f.submit %>
+<% end %>
